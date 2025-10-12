@@ -3,27 +3,36 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="Ajaydev Portfolio — Full Stack Developer | Django, Machine Learning, Frontend Development">
+  <meta name="author" content="Ajaydev">
+  <meta name="robots" content="index, follow">
+
   <title>Ajaydev — Full Stack Developer</title>
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
 
+  <!-- Favicon -->
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+  <!-- Styles -->
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <!-- HEADER -->
   <header class="top-bar">
     <div class="brand">
       <img src="ajaydev.png" alt="Ajaydev" class="brand-pic"/>
       <div class="brand-name">AJAYDEV</div>
     </div>
-
     <nav class="nav">
       <a href="#home">Home</a>
       <a href="#about">About</a>
       <a href="#works">Websites</a>
+      <a href="#skills">Skills</a>
       <a href="#contact">Contact</a>
     </nav>
-
     <div class="cta-wrap">
       <a class="cta" href="mailto:thedevsheets@gmail.com">Let's Connect</a>
     </div>
@@ -37,14 +46,13 @@
         <h1 class="hero-title">Hi, I'm Ajaydev</h1>
         <h2 class="hero-sub">— Full Stack Developer</h2>
         <p class="hero-copy">
-          I build modern, responsive, and dynamic web applications using Django along with frontend technologies like HTML, CSS, and JavaScript. I also integrate Machine Learning solutions to create intelligent, data-driven applications.
-          Passionate about problem-solving and innovation, I enjoy turning ideas into real-world applications—from interactive dashboards to AI-powered platforms—delivering both functionality and engaging user experiences.
+          I build modern, responsive, and dynamic web applications using Django along with frontend technologies like HTML, CSS, and JavaScript. I also integrate Machine Learning solutions to create intelligent, data-driven applications. Passionate about problem-solving and innovation, I enjoy turning ideas into real-world applications.
         </p>
         <div class="hero-actions">
           <a class="btn-primary" href="#works">See Work</a>
+          <a class="btn-secondary" href="#contact">Hire Me</a>
         </div>
       </div>
-
       <div class="hero-right">
         <div class="big-typo">PORTFOLIO</div>
         <div class="photo-wrap">
@@ -60,13 +68,27 @@
       <h3 class="section-sub">About Me</h3>
       <h2 class="section-title">Hi There!</h2>
       <p class="lead">
-        I'm Ajaydev — a passionate developer who mixes backend logic with thoughtful design. I
-        build data-driven websites and AI-powered features. Since starting out, I've focused on
-        reliable systems and intuitive user interfaces.
+        I'm Ajaydev — a passionate developer who mixes backend logic with thoughtful design. I build data-driven websites and AI-powered features. Since starting out, I've focused on reliable systems and intuitive user interfaces.
       </p>
       <p class="muted">
-        Skills: Django · Python · JavaScript · HTML · CSS · TensorFlow · Stenography· Git
+        Skills: Django · Python · JavaScript · HTML · CSS · TensorFlow · Stenography · Git
       </p>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills" class="section skills fade-in">
+    <div class="container">
+      <h3 class="section-sub">My Skills</h3>
+      <h2 class="section-title small">What I Can Do</h2>
+      <div class="skills-grid">
+        <div class="skill-card">Django & Python</div>
+        <div class="skill-card">Frontend: HTML, CSS, JS</div>
+        <div class="skill-card">Machine Learning / AI</div>
+        <div class="skill-card">Data Visualization</div>
+        <div class="skill-card">Git & Version Control</div>
+        <div class="skill-card">Responsive Design</div>
+      </div>
     </div>
   </section>
 
@@ -75,17 +97,15 @@
     <div class="container">
       <h3 class="section-sub">Selected Works</h3>
       <h2 class="section-title small">Portfolio</h2>
-
       <div class="grid">
         <article class="card fade-in">
           <img src="project1.png" alt="Project 1" />
           <div class="card-body">
             <h4>Air quality index app</h4>
-            <p class="tagline">Django · Randomforest · Matpolilib</p>
+            <p class="tagline">Django · RandomForest · Matplotlib</p>
             <a href="https://github.com/yourusername/yourproject" class="link" target="_blank">View on GitHub</a>
           </div>
         </article>
-
         <article class="card fade-in">
           <img src="project2.png" alt="Project 2" />
           <div class="card-body">
@@ -94,7 +114,6 @@
             <a href="https://ajaydevgit.github.io/amazonclone/" class="link" target="_blank">Follow</a>
           </div>
         </article>
-
         <article class="card fade-in">
           <img src="project3.jpeg" alt="Project 3" />
           <div class="card-body">
@@ -112,14 +131,12 @@
     <div class="container">
       <h3 class="section-sub">Say Hello</h3>
       <h2 class="section-title">Let's work together</h2>
-
       <form class="contact-form" action="#" method="post">
-        <!-- <input type="text" name="name" placeholder="Your name" required />
+        <input type="text" name="name" placeholder="Your name" required />
         <input type="email" name="email" placeholder="Email" required />
-        <textarea name="message" rows="6" placeholder="Your message" required></textarea> -->
-        <div class="btn-primary" type="submit"></button>
+        <textarea name="message" rows="6" placeholder="Your message" required></textarea>
+        <button class="btn-primary" type="submit">Send Message</button>
       </form>
-    
       <p class="footer-social">
          Connect: <a href="https://github.com/ajaydevgit" target="_blank">GitHub</a> ·
         <a href="https://discord.com/users/ajaydeva0788" target="_blank">Discord</a>
@@ -127,34 +144,26 @@
     </div>
   </section>
 
-  <footer class="site-footer">
+  <!-- FOOTER -->
+  <footer class="site-footer fade-in">
     <div>© <span id="yr"></span> AJAYDEV — Built with care</div>
   </footer>
 
   <script>
     // Update year in footer
-document.getElementById('yr').textContent = new Date().getFullYear();
+    document.getElementById('yr').textContent = new Date().getFullYear();
 
-// Fade-in on scroll
-const faders = document.querySelectorAll('.fade-in');
-
-const appearOptions = {
-  threshold: 0.1,
-  rootMargin: "0px 0px -50px 0px"
-};
-
-const appearOnScroll = new IntersectionObserver(function(entries, observer) {
-  entries.forEach(entry => {
-    if (!entry.isIntersecting) return;
-    entry.target.classList.add('visible');
-    observer.unobserve(entry.target); // Stop observing once visible
-  });
-}, appearOptions);
-
-faders.forEach(fader => {
-  appearOnScroll.observe(fader);
-});
+    // Fade-in on scroll
+    const faders = document.querySelectorAll('.fade-in');
+    const appearOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
+    const appearOnScroll = new IntersectionObserver(function(entries, observer) {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      });
+    }, appearOptions);
+    faders.forEach(fader => { appearOnScroll.observe(fader); });
   </script>
 </body>
-
 </html>
