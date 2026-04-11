@@ -1,169 +1,391 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="description" content="Ajaydev Portfolio — Full Stack Developer | Django, Machine Learning, Frontend Development">
-  <meta name="author" content="Ajaydev">
-  <meta name="robots" content="index, follow">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ajaydev | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@300;400;600;700;800&display=swap"
+    rel="stylesheet">
+  <style>
+    section {
+      animation: fadeUp .9s cubic-bezier(.22, 1, .36, 1) both;
+      animation-timeline: view();
+      animation-range: entry 5% cover 28%;
+    }
 
-  <title>Ajaydev — Full Stack Developer</title>
+    .card,
+    .photo-card,
+    .timeline-item {
+      animation: fadeUp .8s cubic-bezier(.22, 1, .36, 1) both;
+      animation-timeline: view();
+      animation-range: entry 15% cover 30%;
+    }
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(60px) scale(.94)
+      }
 
-  <!-- Favicon -->
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1)
+      }
+    }
 
-  <!-- Styles -->
-  <link rel="stylesheet" href="style.css" />
+    :root {
+      --bg: #0d1117;
+      --card: #111827;
+      --text: #e6edf3;
+      --muted: #9ca3af;
+      --accent: #58a6ff;
+      --border: rgba(255, 255, 255, .08)
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
+
+    html {
+      scroll-behavior: smooth
+    }
+
+    body {
+      font-family: Poppins, sans-serif;
+      background: linear-gradient(135deg, #0d1117, #111827);
+      color: var(--text)
+    }
+
+    header {
+      position: fixed;
+      top: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(1200px, 92%);
+      padding: 16px 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(17, 24, 39, .75);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--border);
+      border-radius: 40px;
+      z-index: 100
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin-left: 24px
+    }
+
+    nav a:hover {
+      color: var(--accent)
+    }
+
+    section {
+      padding: 110px 8%
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 48px;
+      align-items: center
+    }
+
+    .title {
+      font-size: 72px;
+      font-family: Anton, sans-serif;
+      line-height: .95
+    }
+
+    .subtitle {
+      font-size: 28px;
+      color: var(--accent);
+      margin: 12px 0
+    }
+
+    .hero p {
+      color: var(--muted);
+      max-width: 620px
+    }
+
+    .btns {
+      margin-top: 24px;
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap
+    }
+
+    .btn {
+      padding: 12px 20px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 700;
+      background: var(--accent);
+      color: #08111d
+    }
+
+    .photo-card {
+      position: relative;
+      background: rgba(255, 255, 255, .03);
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      padding: 14px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, .35);
+      max-width: 380px;
+      width: 100%;
+      justify-self: center
+    }
+
+    .photo-card img {
+      width: 100%;
+      max-width: 340px;
+      height: auto;
+      max-height: 420px;
+      border-radius: 20px;
+      display: block;
+      object-fit: cover;
+      margin: 0 auto
+    }
+
+    .floating {
+      position: absolute;
+      bottom: -18px;
+      left: -18px;
+      background: #111827;
+      border: 1px solid var(--border);
+      padding: 14px 18px;
+      border-radius: 16px
+    }
+
+    .section-title {
+      font-size: 48px;
+      font-family: Anton, sans-serif;
+      margin-bottom: 28px
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px
+    }
+
+    .card {
+      background: rgba(255, 255, 255, .03);
+      border: 1px solid var(--border);
+      padding: 24px;
+      border-radius: 20px;
+      transition: .3s
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 16px 40px rgba(88, 166, 255, .08)
+    }
+
+    .timeline {
+      display: grid;
+      gap: 18px
+    }
+
+    .timeline-item {
+      padding: 20px;
+      border-left: 3px solid var(--accent);
+      background: rgba(255, 255, 255, .02);
+      border-radius: 0 16px 16px 0
+    }
+
+    .skills-wrap {
+      display: grid;
+      gap: 18px
+    }
+
+    .progress {
+      height: 12px;
+      background: #1f2937;
+      border-radius: 999px;
+      overflow: hidden
+    }
+
+    .fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent), #7dd3fc)
+    }
+
+    @media(max-width:900px) {
+      .hero {
+        grid-template-columns: 1fr
+      }
+
+      .grid {
+        grid-template-columns: 1fr
+      }
+
+      .title {
+        font-size: 48px
+      }
+
+      nav {
+        display: none
+      }
+    }
+  </style>
 </head>
+
 <body>
-  <!-- HEADER -->
-  <header class="top-bar">
-    <div class="brand">
-      <img src="ajaydev.png" alt="Ajaydev" class="brand-pic"/>
-      <div class="brand-name">AJAYDEV</div>
-    </div>
-    <nav class="nav">
+  <header>
+    <h3>AJAYDEV</h3>
+    <nav>
       <a href="#home">Home</a>
-      <a href="#about">About</a>
-      <a href="#works">Websites</a>
+      <a href="#projects">Projects</a>
       <a href="#skills">Skills</a>
+      <a href="#experience">Experience</a>
       <a href="#contact">Contact</a>
     </nav>
-    <div class="cta-wrap">
-      <a class="cta" href="mailto:thedevsheets@gmail.com">Let's Connect</a>
-    </div>
   </header>
 
-  <!-- HERO -->
-  <section id="home" class="section hero fade-in">
-    <div class="hero-inner">
-      <div class="hero-left">
-        <p class="eyebrow">Design in Details</p>
-        <h1 class="hero-title">Hi, I'm Ajaydev</h1>
-        <h2 class="hero-sub">— Full Stack Developer</h2>
-        <p class="hero-copy">
-          I build modern, responsive, and dynamic web applications using Django along with frontend technologies like HTML, CSS, and JavaScript. I also integrate Machine Learning solutions to create intelligent, data-driven applications. Passionate about problem-solving and innovation, I enjoy turning ideas into real-world applications.
+  <section id="home" class="hero" style="position:relative;">
+    <div>
+      <h1 class="title">Hi, I'm Ajay</h1>
+      <h2 class="subtitle">Full Stack Developer • AI / ML Enthusiast</h2>
+      <p>I build modern full-stack products, interactive portfolio websites, AI-powered applications, and system-level
+        projects like SwiftCache. I focus on clean design, strong engineering, and real-world impact.</p>
+      <div class="btns"
+        style="display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-top:24px;">
+        <a class="btn" href="#contact">Let's Connect</a>
+        <div style="display:flex;gap:12px;">
+          <a class="btn" href="https://github.com/ajaydevgit" target="_blank">GitHub</a>
+          <a class="btn" href="https://linkedin.com/in/buildwithajay" target="_blank">LinkedIn</a>
+        </div>
+      </div>
+    </div>
+    <a href="ajaydev_resume.pdf" download
+      style="position:absolute;top:40px;right:12%;padding:10px 16px;border-radius:12px;background:rgba(255,255,255,.08);border:1px solid var(--border);color:var(--text);text-decoration:none;font-size:14px;font-weight:600;z-index:10;">Download
+      Resume</a>
+    </div>
+    <div class="photo-card">
+      <img src="ajaydev.png" alt="Ajay photo">
+      <div class="floating">
+        <strong>Open to Opportunities</strong><br>
+        Full Stack • AI/ML • Freelance Projects
+      </div>
+    </div>
+  </section>
+
+  <<section id="projects">
+    <h2 class="section-title">Featured Projects</h2>
+    <div class="grid">
+
+      <div class="card">
+        <h3>SwiftCache</h3>
+        <p>
+          Custom in-memory key-value database inspired by Redis with ultra-fast
+          read/write operations.
         </p>
-        <div class="hero-actions">
-          <a class="btn-primary" href="#works">See Work</a>
-          <a class="btn-secondary" href="#contact">Hire Me</a>
-        </div>
+        <a href="https://github.com/ajaydevgit" target="_blank"
+          style="display:inline-block;margin-top:16px;color:var(--accent);text-decoration:none;font-weight:600;">
+          View Project →
+        </a>
       </div>
-      <div class="hero-right">
-        <div class="big-typo">PORTFOLIO</div>
-        <div class="photo-wrap">
-          <img src="ajaydev.png" alt="Ajaydev photo" />
-        </div>
+
+      <div class="card">
+        <h3>Blog App</h3>
+        <p>
+          Responsive full-stack blog platform with structured content and clean UI.
+        </p>
+        <a href="https://ajaydevgit.github.io/blog-app/" target="_blank"
+          style="display:inline-block;margin-top:16px;color:var(--accent);text-decoration:none;font-weight:600;">
+          Live Demo →
+        </a>
       </div>
-    </div>
-  </section>
 
-  <!-- ABOUT -->
-  <section id="about" class="section about fade-in">
-    <div class="container">
-      <h3 class="section-sub">About Me</h3>
-      <h2 class="section-title">Hi There!</h2>
-      <p class="lead">
-        I'm Ajaydev — a passionate developer who mixes backend logic with thoughtful design. I build data-driven websites and AI-powered features. Since starting out, I've focused on reliable systems and intuitive user interfaces.
-      </p>
-      <p class="muted">
-        Skills: Django · Python · JavaScript · HTML · CSS · TensorFlow · Stenography · Git
-      </p>
-    </div>
-  </section>
-
-  <!-- SKILLS -->
-  <section id="skills" class="section skills fade-in">
-    <div class="container">
-      <h3 class="section-sub">My Skills</h3>
-      <h2 class="section-title small">What I Can Do</h2>
-      <div class="skills-grid">
-        <div class="skill-card">Django & Python</div>
-        <div class="skill-card">Frontend: HTML, CSS, JS</div>
-        <div class="skill-card">Machine Learning / AI</div>
-        <div class="skill-card">Data Visualization</div>
-        <div class="skill-card">Git & Version Control</div>
-        <div class="skill-card">Responsive Design</div>
+      <div class="card">
+        <h3>Budget App</h3>
+        <p>
+          React.js budget manager for tracking expenses and financial records.
+        </p>
+        <a href="https://ajaydevgit.github.io/budget-app/" target="_blank"
+          style="display:inline-block;margin-top:16px;color:var(--accent);text-decoration:none;font-weight:600;">
+          Live Demo →
+        </a>
       </div>
-    </div>
-  </section>
 
-  <!-- WORKS / PORTFOLIO -->
-  <section id="works" class="section works fade-in">
-    <div class="container">
-      <h3 class="section-sub">Selected Works</h3>
-      <h2 class="section-title small">Portfolio</h2>
+    </div>
+    </section>
+
+    <section id="skills">
+      <h2 class="section-title">Skills</h2>
       <div class="grid">
-        <article class="card fade-in">
-          <img src="project1.png" alt="Project 1" />
-          <div class="card-body">
-            <h4>Air quality index app</h4>
-            <p class="tagline">Django · RandomForest · Matplotlib</p>
-            <a href="https://github.com/yourusername/yourproject" class="link" target="_blank">View on GitHub</a>
-          </div>
-        </article>
-        <article class="card fade-in">
-          <img src="project2.png" alt="Project 2" />
-          <div class="card-body">
-            <h4>Amazon-clone</h4>
-            <p class="tagline">HTML · CSS · JS</p>
-            <a href="https://ajaydevgit.github.io/amazonclone/" class="link" target="_blank">Follow</a>
-          </div>
-        </article>
-        <article class="card fade-in">
-          <img src="project3.jpeg" alt="Project 3" />
-          <div class="card-body">
-            <h4>Portfolio Website</h4>
-            <p class="tagline">HTML · CSS · JS</p>
-            <a href="#" class="link" target="_blank">Live Preview</a>
-          </div>
-        </article>
+        <div class="card">
+          <h3>Frontend</h3>
+          <p>HTML • CSS • JavaScript • React.js • Tailwind</p>
+        </div>
+        <div class="card">
+          <h3>Backend</h3>
+          <p>Python • Django • Node.js • REST APIs</p>
+        </div>
+        <div class="card">
+          <h3>Programming</h3>
+          <p>C • C++ • Python • JavaScript</p>
+        </div>
+        <div class="card">
+          <h3>AI / ML</h3>
+          <p>Machine Learning • Data Analysis • Model Integration</p>
+        </div>
+        <div class="card">
+          <h3>Tools</h3>
+          <p>Git • GitHub • VS Code • Linux</p>
+        </div>
+        <div class="card">
+          <h3>Creative</h3>
+          <p>Video Editing • UI Design • Portfolio Design</p>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- CONTACT -->
-  <section id="contact" class="section contact fade-in">
-    <div class="container">
-      <h3 class="section-sub">Say Hello</h3>
-      <h2 class="section-title">Let's work together</h2>
-      <form class="contact-form" action="#" method="post">
-        <input type="text" name="name" placeholder="Your name" required />
-        <input type="email" name="email" placeholder="Email" required />
-        <textarea name="message" rows="6" placeholder="Your message" required></textarea>
-        <button class="btn-primary" type="submit">Send Message</button>
+    <section id="experience">
+      <h2 class="section-title">Experience & Certifications</h2>
+      <div class="timeline">
+        <div class="timeline-item"><strong>2026</strong> — Built advanced portfolio and SwiftCache</div>
+        <div class="timeline-item"><strong>2025</strong> — Web Development Internship at Corizo</div>
+        <div class="timeline-item"><strong>2025</strong> — NASA Space Apps Challenge Participant</div>
+      </div>
+    </section>
+
+    <section id="contact"
+      style="text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:70vh;padding:120px 8%;">
+
+      <h2 class="section-title" style="font-size:56px;">Let's work together</h2>
+
+      <form style="max-width:760px;width:100%;display:flex;flex-direction:column;gap:18px;margin-top:20px;">
+
+        <input type="text" placeholder="Your name"
+          style="padding:18px;font-size:18px;border-radius:14px;border:1px solid var(--border);background:rgba(255,255,255,.03);color:white;width:100%;">
+
+        <input type="email" placeholder="Email"
+          style="padding:18px;font-size:18px;border-radius:14px;border:1px solid var(--border);background:rgba(255,255,255,.03);color:white;width:100%;">
+
+        <textarea rows="8" placeholder="Your message"
+          style="padding:18px;font-size:18px;border-radius:14px;border:1px solid var(--border);background:rgba(255,255,255,.03);color:white;width:100%;"></textarea>
+
+        <button class="btn" type="submit"
+          style="border:none;cursor:pointer;padding:18px;font-size:18px;border-radius:14px;">
+          Send Message
+        </button>
       </form>
-      <p class="footer-social">
-         Connect: <a href="https://github.com/ajaydevgit" target="_blank">GitHub</a> ·
-        <a href="https://discord.com/users/ajaydeva0788" target="_blank">Discord</a>
+
+      <p style="margin-top:24px;color:var(--muted);font-size:18px">
+        Connect:
+        <a href="https://github.com/ajaydevgit" target="_blank" style="color:var(--accent)">GitHub</a> ·
+        <a href="https://linkedin.com/in/buildwithajay" target="_blank" style="color:var(--accent)">LinkedIn</a>
       </p>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer class="site-footer fade-in">
-    <div>© <span id="yr"></span> AJAYDEV — Built with care</div>
-  </footer>
-
-  <script>
-    // Update year in footer
-    document.getElementById('yr').textContent = new Date().getFullYear();
-
-    // Fade-in on scroll
-    const faders = document.querySelectorAll('.fade-in');
-    const appearOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
-    const appearOnScroll = new IntersectionObserver(function(entries, observer) {
-      entries.forEach(entry => {
-        if (!entry.isIntersecting) return;
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
-      });
-    }, appearOptions);
-    faders.forEach(fader => { appearOnScroll.observe(fader); });
-  </script>
+    </section>
 </body>
+
 </html>
