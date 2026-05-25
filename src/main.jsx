@@ -245,7 +245,7 @@ function Hero() {
               LinkedIn
               <Linkedin size={17} />
             </a>
-            <a className="btn-secondary" href="/Resume.pdf" download="Resume.pdf">
+            <a className="btn-secondary" href="Resume.pdf" download="Resume.pdf">
               Resume
               <Download size={17} />
             </a>
@@ -258,7 +258,7 @@ function Hero() {
             {hasPhoto ? (
               <img
                 className="profile-photo"
-                src="/ajay.png"
+                src="ajay.png"
                 alt="Ajaydev A"
                 onError={() => setHasPhoto(false)}
               />
@@ -571,7 +571,7 @@ function Contact() {
             Build the next intelligent system.
           </h2>
           <div className="space-y-3">
-            <a className="btn-primary mb-4 w-full justify-center" href="/Resume.pdf" download="Resume.pdf">
+            <a className="btn-primary mb-4 w-full justify-center" href="Resume.pdf" download="Resume.pdf">
               Download Resume
               <Download size={17} />
             </a>
