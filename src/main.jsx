@@ -364,7 +364,7 @@ function RocketGame() {
 
     setBullets((current) => [
       ...current.slice(-5),
-      { id: crypto.randomUUID(), x: 16, y: rocketY },
+      { id: Math.random().toString(36).substring(2, 11), x: 16, y: rocketY },
     ]);
   };
 
