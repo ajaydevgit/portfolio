@@ -162,6 +162,10 @@ function CustomCursor() {
 function useScrollReveal() {
   useEffect(() => {
     const elements = document.querySelectorAll("[data-reveal]");
+    if (!("IntersectionObserver" in window)) {
+      elements.forEach((element) => element.classList.add("is-visible"));
+      return undefined;
+    }
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -245,7 +249,7 @@ function Hero() {
               LinkedIn
               <Linkedin size={17} />
             </a>
-            <a className="btn-secondary" href="Resume.pdf" download="Resume.pdf">
+            <a className="btn-secondary" href={`${import.meta.env.BASE_URL}Resume.pdf`} download="Resume.pdf">
               Resume
               <Download size={17} />
             </a>
@@ -258,7 +262,7 @@ function Hero() {
             {hasPhoto ? (
               <img
                 className="profile-photo"
-                src="ajay.png"
+                src={`${import.meta.env.BASE_URL}ajay.png`}
                 alt="Ajaydev A"
                 onError={() => setHasPhoto(false)}
               />
@@ -325,28 +329,34 @@ function RocketGame() {
   }, [isGameOver]);
 
   useEffect(() => {
-    if (isGameOver) return;
+    if (isGameOver || bullets.length === 0) return;
+
+    const hitBulletIds = new Set();
+    let hitCount = 0;
 
     setObstacles((currentObstacles) => {
-      let hits = 0;
+      let changed = false;
       const nextObstacles = currentObstacles.map((obstacle) => {
-        const isHit = bullets.some(
+        const hitBullet = bullets.find(
           (bullet) =>
+            !hitBulletIds.has(bullet.id) &&
             Math.abs(bullet.x - obstacle.x) < 5 &&
             Math.abs(bullet.y - obstacle.y) < 10,
         );
-        if (!isHit) return obstacle;
-        hits += 1;
+        if (!hitBullet) return obstacle;
+        hitBulletIds.add(hitBullet.id);
+        hitCount += 1;
+        changed = true;
         return recycleObstacle(obstacle, 104 + Math.random() * 16);
       });
 
-      if (hits > 0) {
-        setScore((current) => current + hits);
-        setBullets((current) => current.slice(hits));
-      }
-
-      return nextObstacles;
+      return changed ? nextObstacles : currentObstacles;
     });
+
+    if (hitCount > 0) {
+      setScore((current) => current + hitCount);
+      setBullets((current) => current.filter((bullet) => !hitBulletIds.has(bullet.id)));
+    }
   }, [bullets, isGameOver]);
 
   const moveRocket = (event) => {
@@ -571,7 +581,7 @@ function Contact() {
             Build the next intelligent system.
           </h2>
           <div className="space-y-3">
-            <a className="btn-primary mb-4 w-full justify-center" href="Resume.pdf" download="Resume.pdf">
+            <a className="btn-primary mb-4 w-full justify-center" href={`${import.meta.env.BASE_URL}Resume.pdf`} download="Resume.pdf">
               Download Resume
               <Download size={17} />
             </a>
