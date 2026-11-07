@@ -41,20 +41,20 @@ const projects = [
       "Designed and developed a custom in-memory key-value database engine for ultra-fast data storage and low-latency retrieval.",
   },
   {
-    title: "Budget Management Application",
-    label: "Full-Stack Finance App",
-    stack: "React.js / Data Management / Responsive UI",
-    href: "https://ajaydevgit.github.io/budget-app/",
+    title: "Ensemble CNN",
+    label: "Deep Learning / Computer Vision",
+    stack: "Python / TensorFlow / Keras / CNN",
+    href: "https://github.com/ajaydevgit/Ensemble-CNN",
     description:
-      "Built a full-stack React.js application for expense tracking and financial data management with a clean, responsive interface.",
+      "Developed an ensemble deep learning model combining multiple Convolutional Neural Networks (CNNs) to improve image classification performance and prediction accuracy.",
   },
   {
-    title: "Library Management System",
-    label: "Database-Driven Web Application",
-    stack: "DBMS / Node.js / Express / SQL",
-    href: "https://dbms-ne4r.onrender.com/",
+    title: "PR Pilot",
+    label: "AI-Powered Developer Agent",
+    stack: "React.js / FastAPI / Google Gemini / GitLab API / Python",
+    href: "https://pr-pilot-k7ff.onrender.com",
     description:
-      "Designed and developed a database-driven library management system to handle book catalogs, member registrations, and circulation workflows.",
+      "Built an autonomous AI-powered GitLab Merge Request copilot using Google Gemini. It analyzes GitLab issues, scans repositories, generates step-by-step fix plans, and creates code patches, commits, and merge requests with human approval.",
   },
 ];
 
@@ -66,13 +66,7 @@ const experience = [
     detail:
       "Completed practical training covering data preprocessing, model training, and applied AI/ML workflows.",
   },
-  {
-    role: "AI/ML Learner",
-    org: "IBM Q2D Student Resource Platform",
-    time: "Ongoing",
-    detail:
-      "Pursuing industry-oriented AI and Machine Learning training through structured practical modules.",
-  },
+
   {
     role: "Campus Lead",
     org: "muLearn",
@@ -85,7 +79,7 @@ const experience = [
 const certifications = [
   "ML Internship - Corizo",
   "Web Dev Internship - Corizo",
-  "AI & ML - IBM Q2D",
+  "AI & ML ",
   "NASA Space Apps Challenge",
   "Campus Leadership - muLearn",
 ];
@@ -310,7 +304,7 @@ function RocketGame() {
 
         setObstacles((current) =>
           current.map((obstacle) => {
-          const nextX = obstacle.x - 0.38 * delta;
+            const nextX = obstacle.x - 0.38 * delta;
             if (nextX >= -14) {
               return { ...obstacle, x: nextX };
             }
